@@ -1,4 +1,4 @@
-// //uppr vala correct he
+
 
 // const mongoose = require("mongoose");
 
@@ -133,9 +133,6 @@
 
 //     // --------------------------------------------------------
 //     // Processing lock
-//     //
-//     // Used by submitAnswerController to prevent duplicate
-//     // concurrent submissions.
 //     // --------------------------------------------------------
 
 //     processingToken: {
@@ -209,18 +206,10 @@
 
 // const finalReportSchema = new mongoose.Schema(
 //   {
-//     // --------------------------------------------------------
-//     // Overall average scores
-//     // --------------------------------------------------------
-
 //     averageScores: {
 //       type: averageScoresSchema,
 //       default: undefined,
 //     },
-
-//     // --------------------------------------------------------
-//     // AI insights
-//     // --------------------------------------------------------
 
 //     strengths: {
 //       type: [String],
@@ -385,8 +374,14 @@
 //     },
 
 //     // --------------------------------------------------------
-//     // Optimistic/version tracking
+//     // Session tracking
 //     // --------------------------------------------------------
+
+//     explicitlyAbandoned: {
+//       type: Boolean,
+//       default: false,
+//       index: true,
+//     },
 
 //     version: {
 //       type: Number,
@@ -403,22 +398,14 @@
 // // INDEXES
 // // ============================================================
 
-// // Find a user's active interview quickly.
+// mockInterviewSessionSchema.index({ user: 1, status: 1 });
+// mockInterviewSessionSchema.index({ user: 1, createdAt: -1 });
+// mockInterviewSessionSchema.index({ status: 1, lastActivityAt: 1 });
 // mockInterviewSessionSchema.index({
 //   user: 1,
 //   status: 1,
-// });
-
-// // User's interview history.
-// mockInterviewSessionSchema.index({
-//   user: 1,
-//   createdAt: -1,
-// });
-
-// // Useful for detecting stale sessions.
-// mockInterviewSessionSchema.index({
-//   status: 1,
-//   lastActivityAt: 1,
+//   explicitlyAbandoned: 1,
+//   lastActivityAt: -1,
 // });
 
 // // ============================================================
@@ -440,58 +427,16 @@ const mongoose = require("mongoose");
 
 const answerFeedbackSchema = new mongoose.Schema(
   {
-    technicalScore: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 100,
-    },
-
-    communicationScore: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 100,
-    },
-
-    confidenceScore: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 100,
-    },
-
-    clarityScore: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 100,
-    },
-
-    fillerWords: {
-      type: [String],
-      default: [],
-    },
-
-    strengths: {
-      type: [String],
-      default: [],
-    },
-
-    improvements: {
-      type: [String],
-      default: [],
-    },
-
-    aiAnalysis: {
-      type: String,
-      default: "",
-      trim: true,
-    },
+    technicalScore: { type: Number, required: true, min: 0, max: 100 },
+    communicationScore: { type: Number, required: true, min: 0, max: 100 },
+    confidenceScore: { type: Number, required: true, min: 0, max: 100 },
+    clarityScore: { type: Number, required: true, min: 0, max: 100 },
+    fillerWords: { type: [String], default: [] },
+    strengths: { type: [String], default: [] },
+    improvements: { type: [String], default: [] },
+    aiAnalysis: { type: String, default: "", trim: true },
   },
-  {
-    _id: false,
-  },
+  { _id: false },
 );
 
 // ============================================================
@@ -573,10 +518,11 @@ const interviewQuestionSchema = new mongoose.Schema(
       select: false,
     },
 
+    // NOTE: `select: false` intentionally removed — the controller reads
+    // this from an in-memory document and needs the real value.
     processingStartedAt: {
       type: Date,
       default: null,
-      select: false,
     },
 
     processingError: {
@@ -603,55 +549,31 @@ const interviewQuestionSchema = new mongoose.Schema(
 
 const averageScoresSchema = new mongoose.Schema(
   {
-    technicalScore: {
-      type: Number,
-      min: 0,
-      max: 100,
-      default: 0,
-    },
-
-    communicationScore: {
-      type: Number,
-      min: 0,
-      max: 100,
-      default: 0,
-    },
-
-    confidenceScore: {
-      type: Number,
-      min: 0,
-      max: 100,
-      default: 0,
-    },
-
-    clarityScore: {
-      type: Number,
-      min: 0,
-      max: 100,
-      default: 0,
-    },
+    technicalScore: { type: Number, min: 0, max: 100, default: 0 },
+    communicationScore: { type: Number, min: 0, max: 100, default: 0 },
+    confidenceScore: { type: Number, min: 0, max: 100, default: 0 },
+    clarityScore: { type: Number, min: 0, max: 100, default: 0 },
   },
-  {
-    _id: false,
-  },
+  { _id: false },
 );
 
 const finalReportSchema = new mongoose.Schema(
   {
+    // Explicitly declared so Mongoose doesn't strip it on save.
+    overallScore: {
+      type: Number,
+      min: 0,
+      max: 100,
+      default: 0,
+    },
+
     averageScores: {
       type: averageScoresSchema,
       default: undefined,
     },
 
-    strengths: {
-      type: [String],
-      default: [],
-    },
-
-    weaknesses: {
-      type: [String],
-      default: [],
-    },
+    strengths: { type: [String], default: [] },
+    weaknesses: { type: [String], default: [] },
 
     recommendation: {
       type: String,
@@ -681,9 +603,7 @@ const finalReportSchema = new mongoose.Schema(
       maxlength: 5000,
     },
   },
-  {
-    _id: false,
-  },
+  { _id: false },
 );
 
 // ============================================================
@@ -692,10 +612,6 @@ const finalReportSchema = new mongoose.Schema(
 
 const mockInterviewSessionSchema = new mongoose.Schema(
   {
-    // --------------------------------------------------------
-    // User
-    // --------------------------------------------------------
-
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
@@ -721,10 +637,7 @@ const mockInterviewSessionSchema = new mongoose.Schema(
       required: true,
     },
 
-    techStack: {
-      type: [String],
-      default: [],
-    },
+    techStack: { type: [String], default: [] },
 
     interviewType: {
       type: String,
@@ -756,17 +669,13 @@ const mockInterviewSessionSchema = new mongoose.Schema(
       default: 5,
     },
 
-    // --------------------------------------------------------
-    // Questions
-    // --------------------------------------------------------
-
     questions: {
       type: [interviewQuestionSchema],
       default: [],
     },
 
     // --------------------------------------------------------
-    // Final score
+    // Final score & report
     // --------------------------------------------------------
 
     overallScore: {
@@ -775,10 +684,6 @@ const mockInterviewSessionSchema = new mongoose.Schema(
       max: 100,
       default: 0,
     },
-
-    // --------------------------------------------------------
-    // Final AI report
-    // --------------------------------------------------------
 
     finalReport: {
       type: finalReportSchema,
@@ -789,15 +694,8 @@ const mockInterviewSessionSchema = new mongoose.Schema(
     // Lifecycle timestamps
     // --------------------------------------------------------
 
-    startedAt: {
-      type: Date,
-      default: Date.now,
-    },
-
-    completedAt: {
-      type: Date,
-      default: null,
-    },
+    startedAt: { type: Date, default: Date.now },
+    completedAt: { type: Date, default: null },
 
     lastActivityAt: {
       type: Date,
@@ -827,12 +725,44 @@ const mockInterviewSessionSchema = new mongoose.Schema(
 );
 
 // ============================================================
+// VALIDATION — keep currentQuestionIndex in sync with questions[]
+// ============================================================
+//
+// FIX: Mongoose 7+ no longer passes `next` to middleware hooks.
+// Throwing inside the hook is the correct modern pattern — Mongoose
+// catches the throw and rejects the promise, so callers see it as a
+// validation error the same way they would have with `next(err)`.
+
+mockInterviewSessionSchema.pre("validate", function () {
+  if (
+    Array.isArray(this.questions) &&
+    this.questions.length > 0 &&
+    this.currentQuestionIndex >= this.questions.length
+  ) {
+    throw new Error(
+      `currentQuestionIndex (${this.currentQuestionIndex}) cannot be >= questions.length (${this.questions.length})`,
+    );
+  }
+
+  if (this.currentQuestionIndex < 0) {
+    throw new Error("currentQuestionIndex cannot be negative");
+  }
+});
+
+// ============================================================
 // INDEXES
 // ============================================================
 
 mockInterviewSessionSchema.index({ user: 1, status: 1 });
+
 mockInterviewSessionSchema.index({ user: 1, createdAt: -1 });
+
 mockInterviewSessionSchema.index({ status: 1, lastActivityAt: 1 });
+
+// Hot path: getActiveInterviewsController
+mockInterviewSessionSchema.index({ user: 1, status: 1, lastActivityAt: -1 });
+
+// Full compound — used by resume / cleanup queries
 mockInterviewSessionSchema.index({
   user: 1,
   status: 1,

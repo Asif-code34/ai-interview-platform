@@ -76,6 +76,7 @@
 
 // export default Register;
 
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import "../auth.form.scss";
@@ -89,12 +90,16 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { loading, handleRegister } = useAuth();
+  const { loading, error, handleRegister } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleRegister({ username, email, password });
-    navigate("/");
+
+    const success = await handleRegister({ username, email, password });
+
+    if (success) {
+      navigate("/", { replace: true });
+    }
   };
 
   return (
@@ -115,6 +120,12 @@ const Register = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
+          {error && (
+            <div className="auth-error" role="alert">
+              {error}
+            </div>
+          )}
+
           <div className="input-group">
             <label htmlFor="username">Username</label>
 
@@ -122,9 +133,7 @@ const Register = () => {
               <span className="input-icon">👤</span>
 
               <input
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
+                onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 type="text"
                 id="username"
@@ -143,9 +152,7 @@ const Register = () => {
               <span className="input-icon">✉</span>
 
               <input
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="email"
                 id="email"
@@ -164,9 +171,7 @@ const Register = () => {
               <span className="input-icon">🔒</span>
 
               <input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 type={showPassword ? "text" : "password"}
                 id="password"

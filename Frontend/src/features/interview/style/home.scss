@@ -1,376 +1,4 @@
-// // ── Variables ────────────────────────────────────────────────────────────────
-// $bg-page:        #0d1117;
-// $bg-card:        #161b22;
-// $bg-panel:       #1c2230;
-// $bg-input:       #1e2535;
-// $border-color:   #2a3348;
-// $text-primary:   #e6edf3;
-// $text-muted:     #7d8590;
-// $accent:         #ff2d78;
-// $accent-alt:     #ff6b9d;
-// $badge-required: #ff2d78;
-// $badge-best:     #ff2d78;
-// $info-bg:        #1b2a4a;
-// $info-border:    #2d4a7a;
-// $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-// // ── Page Shell ───────────────────────────────────────────────────────────────
-// .home-page {
-//     width: 100%;
-//     min-height: 100vh;
-//     background-color: $bg-page;
-//     color: $text-primary;
-//     font-family: $font-stack;
-
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     padding: 3rem 1.5rem;
-//     gap: 2rem;
-// }
-
-// // ── Page Header ──────────────────────────────────────────────────────────────
-// .page-header {
-//     text-align: center;
-
-//     h1 {
-//         font-size: 2.25rem;
-//         font-weight: 700;
-//         margin-bottom: 0.5rem;
-//         color: $text-primary;
-//     }
-
-//     p {
-//         color: $text-muted;
-//         font-size: 0.95rem;
-//         max-width: 480px;
-//         margin: 0 auto;
-//         line-height: 1.6;
-//     }
-
-//     .highlight {
-//         color: $accent;
-//     }
-// }
-
-// // ── Main Card ─────────────────────────────────────────────────────────────────
-// .interview-card {
-//     width: 100%;
-//     max-width: 900px;
-//     background-color: $bg-card;
-//     border: 1px solid $border-color;
-//     border-radius: 1rem;
-//     overflow: hidden;
-
-//     &__body {
-//         display: flex;
-//         min-height: 520px;
-//     }
-
-//     &__footer {
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-between;
-//         padding: 1rem 1.5rem;
-//         border-top: 1px solid $border-color;
-
-//         .footer-info {
-//             font-size: 0.8rem;
-//             color: $text-muted;
-//         }
-//     }
-// }
-
-// // ── Panels ────────────────────────────────────────────────────────────────────
-// .panel-divider {
-//     width: 1px;
-//     background-color: $border-color;
-//     flex-shrink: 0;
-// }
-
-// .panel {
-//     flex: 1;
-//     display: flex;
-//     flex-direction: column;
-//     gap: 1rem;
-//     padding: 1.5rem;
-
-//     &__header {
-//         display: flex;
-//         align-items: center;
-//         gap: 0.5rem;
-//         margin-bottom: 0.25rem;
-
-//         h2 {
-//             font-size: 1rem;
-//             font-weight: 600;
-//             color: $text-primary;
-//             flex: 1;
-//         }
-//     }
-
-//     &__icon {
-//         display: flex;
-//         align-items: center;
-//         color: $accent;
-//     }
-
-//     &__textarea {
-//         flex: 1;
-//         width: 100%;
-//         background-color: $bg-input;
-//         border: 1px solid $border-color;
-//         border-radius: 0.5rem;
-//         padding: 0.75rem 1rem;
-//         color: $text-primary;
-//         font-family: $font-stack;
-//         font-size: 0.875rem;
-//         resize: none;
-//         outline: none;
-//         transition: border-color 0.2s;
-//         line-height: 1.5;
-
-//         &::placeholder {
-//             color: $text-muted;
-//         }
-
-//         &:focus {
-//             border-color: $accent;
-//         }
-
-//         &--short {
-//             flex: unset;
-//             height: 96px;
-//         }
-//     }
-
-//     &--left {
-//         position: relative;
-
-//         .char-counter {
-//             position: absolute;
-//             bottom: 2.25rem;
-//             right: 2rem;
-//             font-size: 0.75rem;
-//             color: $text-muted;
-//         }
-//     }
-
-//     &--right {
-//         gap: 0.75rem;
-//     }
-// }
-
-// // ── Badges ────────────────────────────────────────────────────────────────────
-// .badge {
-//     font-size: 0.7rem;
-//     font-weight: 600;
-//     padding: 0.15rem 0.5rem;
-//     border-radius: 0.3rem;
-//     text-transform: uppercase;
-//     letter-spacing: 0.03em;
-
-//     &--required {
-//         background-color: rgba($badge-required, 0.15);
-//         color: $badge-required;
-//         border: 1px solid rgba($badge-required, 0.3);
-//     }
-
-//     &--best {
-//         background-color: rgba($badge-best, 0.15);
-//         color: $badge-best;
-//         border: 1px solid rgba($badge-best, 0.3);
-//     }
-// }
-
-// // ── Section Label ─────────────────────────────────────────────────────────────
-// .section-label {
-//     display: flex;
-//     align-items: center;
-//     gap: 0.5rem;
-//     font-size: 0.875rem;
-//     font-weight: 500;
-//     color: $text-primary;
-//     margin-bottom: 0.25rem;
-// }
-
-// // ── Dropzone ──────────────────────────────────────────────────────────────────
-// .upload-section {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0.5rem;
-// }
-
-// .dropzone {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 0.35rem;
-//     padding: 1.5rem 1rem;
-//     background-color: $bg-input;
-//     border: 2px dashed $border-color;
-//     border-radius: 0.6rem;
-//     cursor: pointer;
-//     transition: border-color 0.2s, background-color 0.2s;
-
-//     &:hover {
-//         border-color: $accent;
-//         background-color: rgba($accent, 0.05);
-//     }
-
-//     &__icon {
-//         color: $accent;
-//         margin-bottom: 0.25rem;
-//     }
-
-//     &__title {
-//         font-size: 0.875rem;
-//         font-weight: 500;
-//         color: $text-primary;
-//         margin: 0;
-//     }
-
-//     &__subtitle {
-//         font-size: 0.75rem;
-//         color: $text-muted;
-//         margin: 0;
-//     }
-// }
-
-// // ── OR Divider ────────────────────────────────────────────────────────────────
-// .or-divider {
-//     display: flex;
-//     align-items: center;
-//     gap: 0.75rem;
-//     color: $text-muted;
-//     font-size: 0.75rem;
-
-//     &::before,
-//     &::after {
-//         content: '';
-//         flex: 1;
-//         height: 1px;
-//         background-color: $border-color;
-//     }
-
-//     span {
-//         white-space: nowrap;
-//     }
-// }
-
-// // ── Self Description ──────────────────────────────────────────────────────────
-// .self-description {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0.5rem;
-// }
-
-// // ── Info Box ──────────────────────────────────────────────────────────────────
-// .info-box {
-//     display: flex;
-//     align-items: flex-start;
-//     gap: 0.6rem;
-//     padding: 0.75rem 1rem;
-//     background-color: $info-bg;
-//     border: 1px solid $info-border;
-//     border-radius: 0.5rem;
-
-//     &__icon {
-//         flex-shrink: 0;
-//         color: #4a90e2;
-//         margin-top: 1px;
-//     }
-
-//     p {
-//         margin: 0;
-//         font-size: 0.8rem;
-//         color: #8ab4f8;
-//         line-height: 1.5;
-
-//         strong {
-//             color: $text-primary;
-//         }
-//     }
-// }
-
-// // ── Generate Button ───────────────────────────────────────────────────────────
-// .generate-btn {
-//     display: flex;
-//     align-items: center;
-//     gap: 0.5rem;
-//     padding: 0.75rem 1.5rem;
-//     background: linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
-//     color: #fff;
-//     font-size: 0.9rem;
-//     font-weight: 600;
-//     border: none;
-//     border-radius: 0.5rem;
-//     cursor: pointer;
-//     transition: opacity 0.2s, transform 0.1s;
-//     font-family: $font-stack;
-
-//     &:hover {
-//         opacity: 0.9;
-//     }
-
-//     &:active {
-//         transform: scale(0.98);
-//     }
-// }
-
-// .recent-reports{
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0.75rem;
-//     width: 100%;
-//     max-width: 900px;
-
-//     .reports-list{
-//         display: flex;
-//         gap: 0.75rem;
-//         flex-wrap: wrap;
-
-//         .report-item{
-//             background-color: $bg-card;
-//             border: 1px solid $border-color;
-//             border-radius: 0.5rem;
-//             padding: 1rem;
-//             flex: 1;
-//             display: flex;
-//             flex-direction: column;
-//             gap: 0.5rem;
-//             cursor: pointer;
-//             flex-shrink: 0;
-
-//             .match-score {
-//                 font-size: 0.8rem;
-//                 font-weight: 600;
-//                 color: $accent;
-//                 align-items: flex-start;
-//             }
-//         }
-//     }
-// }
-
-
-// // ── Page Footer ───────────────────────────────────────────────────────────────
-// .page-footer {
-//     display: flex;
-//     gap: 1.5rem;
-
-//     a {
-//         font-size: 0.8rem;
-//         color: $text-muted;
-//         text-decoration: none;
-//         transition: color 0.2s;
-
-//         &:hover {
-//             color: $text-primary;
-//         }
-//     }
-// }
 
 
 // // ── Variables ────────────────────────────────────────────────────────────────
@@ -401,25 +29,13 @@
 //     box-sizing: border-box;
 // }
 
-// // .home-page {
-// //     width: 100%;
-// //     min-height: 100vh;
-// //     background-color: $bg-page;
-// //     color: $text-primary;
-// //     font-family: $font-stack;
 
-// //     display: flex;
-// //     flex-direction: column;
-// //     align-items: center;
+// // ── Home Page ────────────────────────────────────────────────────────────────
 
-// //     padding: 4rem 1.5rem 2rem;
-// //     gap: 2rem;
-
-// //     overflow-x: hidden;
-// // }
 // .home-page {
 //     width: 100%;
 //     min-height: 100vh;
+//     min-height: 100dvh;
 
 //     background-color: $bg-page;
 //     color: $text-primary;
@@ -433,15 +49,17 @@
 //     padding: 1.25rem 1.5rem 1.5rem;
 //     gap: 1rem;
 
-//     box-sizing: border-box;
 //     overflow-x: hidden;
 // }
+
 
 // // ── Loading Screen ───────────────────────────────────────────────────────────
 
 // .loading-screen {
 //     width: 100%;
 //     min-height: 100vh;
+//     min-height: 100dvh;
+
 //     background-color: $bg-page;
 //     color: $text-primary;
 //     font-family: $font-stack;
@@ -494,6 +112,109 @@
 // @keyframes spin {
 //     to {
 //         transform: rotate(360deg);
+//     }
+// }
+
+
+// // ── Minimal Header ───────────────────────────────────────────────────────────
+// // Brand on the left, icon-only logout on the right.
+// // Fully in-flow, so it can never overlap the page header on any screen.
+
+// .home-header {
+//     width: 100%;
+//     max-width: 980px;
+
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     gap: 1rem;
+
+//     margin-bottom: 0.25rem;
+
+//     &__brand {
+//         min-width: 0;
+//         flex-shrink: 0;
+
+//         display: flex;
+//         align-items: center;
+//         gap: 0.55rem;
+//     }
+
+//     &__logo {
+//         width: 26px;
+//         height: 26px;
+
+//         flex-shrink: 0;
+
+//         border-radius: 8px;
+
+//         background: linear-gradient(
+//             135deg,
+//             $accent 0%,
+//             darken($accent, 14%) 100%
+//         );
+
+//         box-shadow: 0 0 16px rgba($accent, 0.45);
+//     }
+
+//     &__name {
+//         color: $text-primary;
+//         font-size: 0.9rem;
+//         font-weight: 700;
+//         letter-spacing: -0.01em;
+
+//         white-space: nowrap;
+//     }
+
+//     &__logout {
+//         display: inline-flex;
+//         align-items: center;
+//         justify-content: center;
+//         gap: 0.4rem;
+
+//         height: 36px;
+//         padding: 0 0.85rem;
+
+//         background: rgba(#fff, 0.04);
+//         color: $text-muted;
+
+//         border: 1px solid rgba(#fff, 0.1);
+//         border-radius: 999px;
+
+//         font-family: $font-stack;
+//         font-size: 0.74rem;
+//         font-weight: 600;
+//         line-height: 1;
+
+//         cursor: pointer;
+//         white-space: nowrap;
+
+//         transition:
+//             background-color 0.2s ease,
+//             border-color 0.2s ease,
+//             color 0.2s ease,
+//             box-shadow 0.2s ease;
+
+//         svg {
+//             flex-shrink: 0;
+//         }
+
+//         &:hover:not(:disabled) {
+//             background: rgba($accent, 0.1);
+//             border-color: rgba($accent, 0.4);
+//             color: $accent;
+//             box-shadow: 0 0 0 3px rgba($accent, 0.08);
+//         }
+
+//         &:focus-visible {
+//             outline: 2px solid $accent;
+//             outline-offset: 3px;
+//         }
+
+//         &:disabled {
+//             opacity: 0.5;
+//             cursor: not-allowed;
+//         }
 //     }
 // }
 
@@ -553,6 +274,157 @@
 // }
 
 
+// // ── Mock Interview CTA ───────────────────────────────────────────────────────
+
+// .mock-cta {
+//     width: 100%;
+//     max-width: 980px;
+
+//     position: relative;
+//     overflow: hidden;
+
+//     display: flex;
+//     align-items: center;
+//     gap: 1rem;
+
+//     padding: 1.1rem 1.25rem;
+
+//     background: linear-gradient(
+//         135deg,
+//         rgba($accent, 0.14) 0%,
+//         rgba($accent, 0.04) 60%,
+//         rgba($accent, 0.02) 100%
+//     );
+
+//     border: 1px solid rgba($accent, 0.28);
+//     border-radius: 1rem;
+
+//     cursor: pointer;
+//     text-align: left;
+
+//     font-family: $font-stack;
+//     color: inherit;
+
+//     transition:
+//         border-color 0.25s ease,
+//         transform 0.2s ease,
+//         box-shadow 0.25s ease;
+
+//     &::before {
+//         content: '';
+//         position: absolute;
+//         inset: 0;
+
+//         background: radial-gradient(
+//             ellipse at top right,
+//             rgba($accent, 0.18),
+//             transparent 60%
+//         );
+
+//         pointer-events: none;
+//     }
+
+//     &:hover {
+//         border-color: rgba($accent, 0.55);
+//         transform: translateY(-2px);
+
+//         box-shadow: 0 14px 38px rgba($accent, 0.18);
+
+//         .mock-cta__arrow {
+//             transform: translateX(4px);
+//         }
+//     }
+
+//     &:active {
+//         transform: translateY(0);
+//     }
+
+//     &:focus-visible {
+//         outline: 2px solid $accent;
+//         outline-offset: 3px;
+//     }
+
+//     &__icon {
+//         flex-shrink: 0;
+
+//         width: 48px;
+//         height: 48px;
+
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+
+//         background: linear-gradient(
+//             135deg,
+//             $accent 0%,
+//             darken($accent, 10%) 100%
+//         );
+
+//         color: #fff;
+
+//         border-radius: 0.75rem;
+
+//         box-shadow: 0 6px 20px rgba($accent, 0.4);
+
+//         position: relative;
+//         z-index: 1;
+//     }
+
+//     &__content {
+//         min-width: 0;
+//         flex: 1;
+
+//         display: flex;
+//         flex-direction: column;
+
+//         position: relative;
+//         z-index: 1;
+//     }
+
+//     &__eyebrow {
+//         color: $accent;
+//         font-size: 0.6rem;
+//         font-weight: 800;
+//         letter-spacing: 0.14em;
+
+//         margin-bottom: 0.2rem;
+//     }
+
+//     &__title {
+//         margin: 0;
+
+//         color: $text-primary;
+//         font-size: 1rem;
+//         font-weight: 700;
+//         letter-spacing: -0.01em;
+//         line-height: 1.25;
+//     }
+
+//     &__subtitle {
+//         margin: 0.2rem 0 0;
+
+//         color: $text-muted;
+//         font-size: 0.74rem;
+//         line-height: 1.4;
+//     }
+
+//     &__arrow {
+//         flex-shrink: 0;
+
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+
+//         color: $accent;
+
+//         position: relative;
+//         z-index: 1;
+
+//         transition: transform 0.2s ease;
+//     }
+// }
+
+
 // // ── Main Card ────────────────────────────────────────────────────────────────
 
 // .interview-card {
@@ -571,7 +443,12 @@
 
 //     &__body {
 //         display: flex;
+
+//         // Viewport-aware height: never taller than the space a laptop
+//         // actually has, never shorter than a usable minimum.
 //         min-height: 540px;
+//         min-height: clamp(380px, calc(100vh - 300px), 540px);
+//         min-height: clamp(380px, calc(100dvh - 300px), 540px);
 //     }
 
 //     &__footer {
@@ -704,7 +581,11 @@
 // .panel__textarea {
 //     width: 100%;
 //     height: 100%;
+
+//     // Grows with the viewport, shrinks on short laptops.
 //     min-height: 360px;
+//     min-height: clamp(200px, calc(100vh - 30rem), 360px);
+//     min-height: clamp(200px, calc(100dvh - 30rem), 360px);
 
 //     display: block;
 
@@ -1295,6 +1176,22 @@
 // }
 
 
+// // ── Home Error ───────────────────────────────────────────────────────────────
+
+// .home-error {
+//     width: 100%;
+//     margin-bottom: 1.25rem;
+//     padding: 0.8rem 1rem;
+//     box-sizing: border-box;
+//     border: 1px solid rgba(248, 113, 113, 0.35);
+//     border-radius: 0.6rem;
+//     background-color: rgba(248, 113, 113, 0.08);
+//     color: #f87171;
+//     font-size: 0.85rem;
+//     font-weight: 600;
+// }
+
+
 // // ── Tablet ───────────────────────────────────────────────────────────────────
 
 // @media (max-width: 900px) {
@@ -1305,10 +1202,6 @@
 
 //     .interview-card {
 //         max-width: 760px;
-//     }
-
-//     .interview-card__body {
-//         min-height: 500px;
 //     }
 
 //     .panel {
@@ -1326,8 +1219,29 @@
 // @media (max-width: 700px) {
 
 //     .home-page {
-//         padding: 2.5rem 0.85rem 1.25rem;
-//         gap: 1.5rem;
+//         padding: 1.25rem 0.85rem 1.5rem;
+//         gap: 1.25rem;
+//     }
+
+//     .home-header {
+//         margin-bottom: 0.35rem;
+//     }
+
+//     .mock-cta {
+//         padding: 1rem;
+
+//         &__icon {
+//             width: 44px;
+//             height: 44px;
+//         }
+
+//         &__title {
+//             font-size: 0.95rem;
+//         }
+
+//         &__subtitle {
+//             font-size: 0.7rem;
+//         }
 //     }
 
 //     .page-header {
@@ -1425,11 +1339,68 @@
 // @media (max-width: 480px) {
 
 //     .home-page {
-//         padding: 2rem 0.65rem 1rem;
+//         padding: 1rem 0.65rem 1.25rem;
+//         gap: 1.1rem;
+//     }
+
+//     .home-header__logo {
+//         width: 24px;
+//         height: 24px;
+//     }
+
+//     .home-header__name {
+//         font-size: 0.85rem;
+//     }
+
+//     .home-header__logout {
+//         height: 34px;
+//         padding: 0 0.7rem;
+//         font-size: 0.7rem;
+//     }
+
+//     .home-header__logout-label {
+//         display: none;
+//     }
+
+//     .home-header__logout svg {
+//         width: 15px;
+//         height: 15px;
+//     }
+
+//     .mock-cta {
+//         gap: 0.8rem;
+//         padding: 0.9rem;
+
+//         &__icon {
+//             width: 40px;
+//             height: 40px;
+//             border-radius: 0.65rem;
+
+//             svg {
+//                 width: 17px;
+//                 height: 17px;
+//             }
+//         }
+
+//         &__eyebrow {
+//             font-size: 0.56rem;
+//         }
+
+//         &__title {
+//             font-size: 0.9rem;
+//         }
+
+//         &__subtitle {
+//             font-size: 0.66rem;
+//         }
+
+//         &__arrow svg {
+//             width: 17px;
+//             height: 17px;
+//         }
 //     }
 
 //     .page-header {
-
 //         &__eyebrow {
 //             font-size: 0.52rem;
 //             letter-spacing: 0.08em;
@@ -1553,6 +1524,33 @@
 //         padding-inline: 0.5rem;
 //     }
 
+//     .home-header__name {
+//         font-size: 0.78rem;
+//     }
+
+//     .home-header__logout {
+//         height: 32px;
+//         padding: 0 0.6rem;
+//     }
+
+//     .mock-cta {
+//         gap: 0.65rem;
+//         padding: 0.8rem;
+
+//         &__icon {
+//             width: 36px;
+//             height: 36px;
+//         }
+
+//         &__title {
+//             font-size: 0.84rem;
+//         }
+
+//         &__subtitle {
+//             display: none;
+//         }
+//     }
+
 //     .page-header h1 {
 //         font-size: 1.4rem;
 //     }
@@ -1580,6 +1578,310 @@
 // }
 
 
+// // ── Short Viewports (small-height laptops: 1366×768, 1280×720, 1440×900…) ────
+
+// @media (min-width: 701px) and (max-height: 860px) {
+
+//     .home-page {
+//         padding: 1rem 1.5rem 1.25rem;
+//         gap: 0.85rem;
+//     }
+
+//     .page-header {
+//         &__eyebrow {
+//             margin-bottom: 0.7rem;
+//         }
+
+//         h1 {
+//             font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+//         }
+
+//         p {
+//             margin-top: 0.75rem;
+//             font-size: 0.9rem;
+//             line-height: 1.6;
+//         }
+//     }
+
+//     .panel {
+//         padding: 1.25rem;
+//     }
+
+//     .panel--right {
+//         gap: 0.75rem;
+//     }
+
+//     .panel__header {
+//         min-height: 34px;
+//     }
+
+//     .panel__icon {
+//         width: 32px;
+//         height: 32px;
+//     }
+
+//     .panel__textarea {
+//         padding: 0.9rem 0.9rem 2rem;
+//     }
+
+//     .panel__textarea--short {
+//         min-height: 88px;
+//         height: 88px;
+//     }
+
+//     .dropzone {
+//         min-height: 124px;
+//     }
+
+//     .interview-card__footer {
+//         min-height: 68px;
+//         padding: 0.85rem 1.35rem;
+//     }
+// }
+
+
+// @media (min-width: 701px) and (max-height: 780px) {
+
+//     .home-page {
+//         padding: 0.85rem 1.25rem 1rem;
+//         gap: 0.7rem;
+//     }
+
+//     .page-header {
+//         &__eyebrow {
+//             margin-bottom: 0.55rem;
+//             font-size: 0.62rem;
+//         }
+
+//         h1 {
+//             font-size: clamp(1.7rem, 3.2vw, 2.1rem);
+//         }
+
+//         p {
+//             margin-top: 0.6rem;
+//             font-size: 0.85rem;
+//             line-height: 1.55;
+//         }
+//     }
+
+//     .panel {
+//         padding: 1.1rem;
+//     }
+
+//     .panel--right {
+//         gap: 0.7rem;
+//     }
+
+//     .panel__header {
+//         min-height: 32px;
+//         gap: 0.6rem;
+//     }
+
+//     .panel__icon {
+//         width: 30px;
+//         height: 30px;
+//     }
+
+//     .panel__textarea {
+//         padding: 0.85rem 0.85rem 1.9rem;
+//         font-size: 0.85rem;
+//     }
+
+//     .panel__textarea--short {
+//         min-height: 80px;
+//         height: 80px;
+//     }
+
+//     .dropzone {
+//         min-height: 110px;
+//         padding: 1rem;
+
+//         &__icon {
+//             width: 42px;
+//             height: 42px;
+//         }
+//     }
+
+//     .info-box {
+//         padding: 0.65rem 0.75rem;
+//     }
+
+//     .interview-card__footer {
+//         min-height: 62px;
+//         padding: 0.75rem 1.15rem;
+//     }
+
+//     .generate-btn {
+//         min-height: 40px;
+//         padding: 0.6rem 1rem;
+//     }
+// }
+
+
+// @media (min-width: 701px) and (max-height: 700px) {
+
+//     .home-page {
+//         padding: 0.7rem 1rem 0.85rem;
+//         gap: 0.6rem;
+//     }
+
+//     .page-header {
+//         &__eyebrow {
+//             margin-bottom: 0.45rem;
+//         }
+
+//         h1 {
+//             font-size: 1.7rem;
+//         }
+
+//         p {
+//             margin-top: 0.5rem;
+//             font-size: 0.8rem;
+//             line-height: 1.5;
+//         }
+//     }
+
+//     .panel {
+//         padding: 0.95rem;
+//     }
+
+//     .panel--right {
+//         gap: 0.6rem;
+//     }
+
+//     .panel__header {
+//         min-height: 30px;
+//     }
+
+//     .panel__icon {
+//         width: 28px;
+//         height: 28px;
+//     }
+
+//     .panel__textarea {
+//         padding: 0.8rem 0.8rem 1.8rem;
+//     }
+
+//     .panel__textarea--short {
+//         min-height: 72px;
+//         height: 72px;
+//     }
+
+//     .dropzone {
+//         min-height: 96px;
+//         padding: 0.85rem;
+
+//         &__icon {
+//             width: 38px;
+//             height: 38px;
+//             margin-bottom: 0.15rem;
+//         }
+
+//         &__title {
+//             font-size: 0.78rem;
+//         }
+//     }
+
+//     .info-box {
+//         padding: 0.55rem 0.65rem;
+
+//         p {
+//             font-size: 0.68rem;
+//             line-height: 1.45;
+//         }
+//     }
+
+//     .interview-card__footer {
+//         min-height: 58px;
+//     }
+
+//     .footer-info {
+//         font-size: 0.66rem;
+//     }
+// }
+
+
+// @media (min-width: 701px) and (max-height: 620px) {
+
+//     .home-page {
+//         padding: 0.6rem 0.85rem 0.7rem;
+//         gap: 0.5rem;
+//     }
+
+//     .page-header {
+//         &__eyebrow {
+//             margin-bottom: 0.35rem;
+//             font-size: 0.58rem;
+//         }
+
+//         h1 {
+//             font-size: 1.5rem;
+//         }
+
+//         p {
+//             margin-top: 0.4rem;
+//             font-size: 0.76rem;
+//             line-height: 1.45;
+//         }
+//     }
+
+//     .panel {
+//         padding: 0.8rem;
+//     }
+
+//     .panel--right {
+//         gap: 0.5rem;
+//     }
+
+//     .panel__header {
+//         min-height: 28px;
+//     }
+
+//     .panel__icon {
+//         width: 26px;
+//         height: 26px;
+//     }
+
+//     .panel__textarea {
+//         padding: 0.7rem 0.7rem 1.7rem;
+//     }
+
+//     .panel__textarea--short {
+//         min-height: 64px;
+//         height: 64px;
+//     }
+
+//     .dropzone {
+//         min-height: 84px;
+//         padding: 0.7rem;
+
+//         &__icon {
+//             width: 34px;
+//             height: 34px;
+//         }
+
+//         &__subtitle {
+//             font-size: 0.65rem;
+//         }
+//     }
+
+    
+//     .or-divider {
+//         font-size: 0.6rem;
+//     }
+
+//     .interview-card__footer {
+//         min-height: 54px;
+//         padding: 0.6rem 0.9rem;
+//     }
+
+//     .generate-btn {
+//         min-height: 38px;
+//         font-size: 0.74rem;
+//     }
+// }
+
+
 // // ── Reduced Motion ───────────────────────────────────────────────────────────
 
 // @media (prefers-reduced-motion: reduce) {
@@ -1593,7 +1895,6 @@
 //         transition-duration: 0.01ms !important;
 //     }
 // }
-
 
 
 // ── Variables ────────────────────────────────────────────────────────────────
@@ -1613,6 +1914,9 @@ $info-bg:        #1b2a4a;
 $info-border:    #2d4a7a;
 $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
                  Roboto, sans-serif;
+
+// CHANGED: single shared content width for all main sections
+$content-max:    1240px;
 
 
 // ── Reset ────────────────────────────────────────────────────────────────────
@@ -1711,11 +2015,126 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
+// ── Minimal Header ───────────────────────────────────────────────────────────
+
+.home-header {
+    width: 100%;
+    max-width: $content-max;      // CHANGED: was 980px
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-bottom: 0.25rem;
+
+    &__brand {
+        min-width: 0;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    // CHANGED: gradient badge with sparkle glyph inside
+    &__logo {
+        width: 30px;
+        height: 30px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 9px;
+
+        background: linear-gradient(
+            135deg,
+            $accent 0%,
+            darken($accent, 16%) 100%
+        );
+
+        color: #fff;
+
+        box-shadow:
+            0 4px 14px rgba($accent, 0.42),
+            inset 0 1px 0 rgba(#fff, 0.18);
+
+        svg {
+            width: 17px;
+            height: 17px;
+        }
+    }
+
+    &__name {
+        color: $text-primary;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+
+        white-space: nowrap;
+    }
+
+    &__logout {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+
+        height: 36px;
+        padding: 0 0.85rem;
+
+        background: rgba(#fff, 0.04);
+        color: $text-muted;
+
+        border: 1px solid rgba(#fff, 0.1);
+        border-radius: 999px;
+
+        font-family: $font-stack;
+        font-size: 0.74rem;
+        font-weight: 600;
+        line-height: 1;
+
+        cursor: pointer;
+        white-space: nowrap;
+
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        &:hover:not(:disabled) {
+            background: rgba($accent, 0.1);
+            border-color: rgba($accent, 0.4);
+            color: $accent;
+            box-shadow: 0 0 0 3px rgba($accent, 0.08);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $accent;
+            outline-offset: 3px;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+
 // ── Page Header ──────────────────────────────────────────────────────────────
 
 .page-header {
     width: 100%;
-    max-width: 760px;
+    max-width: 860px;             // CHANGED: was 760px — a touch wider, stays text-focused
 
     text-align: center;
 
@@ -1755,7 +2174,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 
     p {
-        max-width: 600px;
+        max-width: 640px;
 
         margin: 1rem auto 0;
 
@@ -1766,11 +2185,163 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
+// ── Mock Interview CTA ───────────────────────────────────────────────────────
+
+.mock-cta {
+    width: 100%;
+    max-width: $content-max;      // CHANGED: was 980px
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1.1rem 1.25rem;
+    min-height: 88px;             // CHANGED: matches recent-reports header height
+
+    background: linear-gradient(
+        135deg,
+        rgba($accent, 0.14) 0%,
+        rgba($accent, 0.04) 60%,
+        rgba($accent, 0.02) 100%
+    );
+
+    border: 1px solid rgba($accent, 0.28);
+    border-radius: 1rem;
+
+    cursor: pointer;
+    text-align: left;
+
+    font-family: $font-stack;
+    color: inherit;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+
+        background: radial-gradient(
+            ellipse at top right,
+            rgba($accent, 0.18),
+            transparent 60%
+        );
+
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: rgba($accent, 0.55);
+        transform: translateY(-2px);
+
+        box-shadow: 0 14px 38px rgba($accent, 0.18);
+
+        .mock-cta__arrow {
+            transform: translateX(4px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(
+            135deg,
+            $accent 0%,
+            darken($accent, 10%) 100%
+        );
+
+        color: #fff;
+
+        border-radius: 0.75rem;
+
+        box-shadow: 0 6px 20px rgba($accent, 0.4);
+
+        position: relative;
+        z-index: 1;
+    }
+
+    &__content {
+        min-width: 0;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+        z-index: 1;
+    }
+
+    &__eyebrow {
+        color: $accent;
+        font-size: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+
+        margin-bottom: 0.2rem;
+    }
+
+    &__title {
+        margin: 0;
+
+        color: $text-primary;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+    }
+
+    &__subtitle {
+        margin: 0.2rem 0 0;
+
+        color: $text-muted;
+        font-size: 0.74rem;
+        line-height: 1.4;
+    }
+
+    &__arrow {
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: $accent;
+
+        position: relative;
+        z-index: 1;
+
+        transition: transform 0.2s ease;
+    }
+}
+
+
 // ── Main Card ────────────────────────────────────────────────────────────────
 
 .interview-card {
     width: 100%;
-    max-width: 980px;
+    max-width: $content-max;      // CHANGED: was 980px
 
     background-color: $bg-card;
     border: 1px solid $border-color;
@@ -1785,8 +2356,6 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     &__body {
         display: flex;
 
-        // Viewport-aware height: never taller than the space a laptop
-        // actually has, never shorter than a usable minimum.
         min-height: 540px;
         min-height: clamp(380px, calc(100vh - 300px), 540px);
         min-height: clamp(380px, calc(100dvh - 300px), 540px);
@@ -1923,7 +2492,6 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     width: 100%;
     height: 100%;
 
-    // Grows with the viewport, shrinks on short laptops.
     min-height: 360px;
     min-height: clamp(200px, calc(100vh - 30rem), 360px);
     min-height: clamp(200px, calc(100dvh - 30rem), 360px);
@@ -2110,6 +2678,83 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
+// ── Dropzone — Selected File State ───────────────────────────────────────────
+// CHANGED: moved OUT of media queries — these are top-level, always active.
+
+.dropzone--has-file {
+    border-style: solid;
+    border-color: rgba($accent, 0.45);
+    background-color: rgba($accent, 0.05);
+
+    &:hover {
+        background-color: rgba($accent, 0.07);
+        border-color: rgba($accent, 0.6);
+    }
+}
+
+.dropzone__icon--success {
+    color: #3fb950;
+    background-color: rgba(#3fb950, 0.1);
+    border-color: rgba(#3fb950, 0.25);
+}
+
+.dropzone__title--success {
+    color: #3fb950;
+}
+
+.dropzone__filename {
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0.25rem 0.6rem;
+
+    background-color: rgba(#fff, 0.05);
+    border-radius: 0.35rem;
+
+    color: $text-primary;
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropzone__remove {
+    margin-top: 0.35rem;
+    padding: 0.28rem 0.7rem;
+
+    background: transparent;
+    color: #ff4d4d;
+
+    border: 1px solid rgba(#ff4d4d, 0.35);
+    border-radius: 999px;
+
+    font-family: $font-stack;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(#ff4d4d, 0.1);
+        border-color: rgba(#ff4d4d, 0.6);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #ff4d4d;
+        outline-offset: 3px;
+    }
+}
+
+
 // ── OR Divider ───────────────────────────────────────────────────────────────
 
 .or-divider {
@@ -2184,7 +2829,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
-// ── Footer ──────────────────────────────────────────────────────────────────
+// ── Footer ───────────────────────────────────────────────────────────────────
 
 .footer-info {
     display: flex;
@@ -2283,26 +2928,43 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
 
 // ── Recent Reports ───────────────────────────────────────────────────────────
+// CHANGED: styled as a card matching .mock-cta — same width, same radius,
+// same header rhythm. Reads as a matched pair with the CTA above it.
 
 .recent-reports {
     width: 100%;
-    max-width: 980px;
+    max-width: $content-max;      // CHANGED: was 980px
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.22),
+        0 2px 8px rgba(0, 0, 0, 0.12);
 
     &__header {
+        min-height: 88px;         // CHANGED: matches .mock-cta height
+
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
         gap: 1rem;
+
+        padding: 1.1rem 1.25rem;
+
+        border-bottom: 1px solid $border-color;
 
         h2 {
             margin: 0.25rem 0 0;
 
             color: $text-primary;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 650;
             letter-spacing: -0.01em;
         }
@@ -2311,20 +2973,23 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
 .section-eyebrow {
     color: $accent;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
 }
 
 .report-count {
-    padding: 0.3rem 0.55rem;
+    flex-shrink: 0;
 
-    background-color: $bg-card;
-    border: 1px solid $border-color;
-    border-radius: 0.4rem;
+    padding: 0.35rem 0.6rem;
 
-    color: $text-muted;
+    background-color: rgba($accent, 0.1);
+    border: 1px solid rgba($accent, 0.25);
+    border-radius: 999px;
+
+    color: $accent;
     font-size: 0.68rem;
+    font-weight: 700;
 }
 
 .reports-list {
@@ -2335,7 +3000,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
     gap: 0.75rem;
 
-    padding: 0;
+    padding: 1.1rem 1.25rem;      // CHANGED: inner padding so cards breathe
     margin: 0;
 
     list-style: none;
@@ -2346,7 +3011,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
     padding: 1rem;
 
-    background-color: $bg-card;
+    background-color: $bg-input;
     border: 1px solid $border-color;
     border-radius: 0.7rem;
 
@@ -2359,8 +3024,8 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
         box-shadow 0.2s ease;
 
     &:hover {
-        border-color: lighten($border-color, 8%);
-        background-color: lighten($bg-card, 1%);
+        border-color: rgba($accent, 0.35);
+        background-color: rgba($accent, 0.045);
         transform: translateY(-2px);
 
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -2517,20 +3182,44 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
+// ── Home Error ───────────────────────────────────────────────────────────────
+
+.home-error {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    border-radius: 0.6rem;
+    background-color: rgba(248, 113, 113, 0.08);
+    color: #f87171;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+
+// ── Ultrawide cap ────────────────────────────────────────────────────────────
+
+@media (min-width: 1440px) {
+    .home-page {
+        padding-inline: 2rem;
+    }
+}
+
+
 // ── Tablet ───────────────────────────────────────────────────────────────────
 
 @media (max-width: 900px) {
-
     .home-page {
         padding: 3rem 1rem 1.5rem;
     }
 
-    .interview-card {
+    .interview-card,
+    .recent-reports,
+    .mock-cta,
+    .home-header {
         max-width: 760px;
     }
-
-    // NOTE: body min-height is intentionally left to the dvh clamp above
-    // so short-height tablets/laptops still fit.
 
     .panel {
         padding: 1.25rem;
@@ -2545,10 +3234,46 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 // ── Mobile ───────────────────────────────────────────────────────────────────
 
 @media (max-width: 700px) {
-
     .home-page {
-        padding: 2.5rem 0.85rem 1.25rem;
-        gap: 1.5rem;
+        padding: 1.25rem 0.85rem 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .home-header {
+        margin-bottom: 0.35rem;
+    }
+
+    .home-header__logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .home-header__name {
+        font-size: 0.9rem;
+    }
+
+    .mock-cta {
+        padding: 1rem;
+        min-height: auto;
+
+        &__icon {
+            width: 44px;
+            height: 44px;
+        }
+
+        &__title {
+            font-size: 0.95rem;
+        }
+
+        &__subtitle {
+            font-size: 0.7rem;
+        }
     }
 
     .page-header {
@@ -2626,7 +3351,11 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 
     .recent-reports {
+        border-radius: 0.8rem;
+
         &__header {
+            min-height: auto;
+            padding: 1rem;
             align-items: center;
 
             h2 {
@@ -2637,6 +3366,8 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
     .reports-list {
         grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 0.65rem;
     }
 }
 
@@ -2644,13 +3375,69 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 // ── Small Mobile ─────────────────────────────────────────────────────────────
 
 @media (max-width: 480px) {
-
     .home-page {
-        padding: 2rem 0.65rem 1rem;
+        padding: 1rem 0.65rem 1.25rem;
+        gap: 1.1rem;
+    }
+
+    .home-header__logo {
+        width: 26px;
+        height: 26px;
+    }
+
+    .home-header__name {
+        font-size: 0.85rem;
+    }
+
+    .home-header__logout {
+        height: 34px;
+        padding: 0 0.7rem;
+        font-size: 0.7rem;
+    }
+
+    .home-header__logout-label {
+        display: none;
+    }
+
+    .home-header__logout svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .mock-cta {
+        gap: 0.8rem;
+        padding: 0.9rem;
+
+        &__icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.65rem;
+
+            svg {
+                width: 17px;
+                height: 17px;
+            }
+        }
+
+        &__eyebrow {
+            font-size: 0.56rem;
+        }
+
+        &__title {
+            font-size: 0.9rem;
+        }
+
+        &__subtitle {
+            font-size: 0.66rem;
+        }
+
+        &__arrow svg {
+            width: 17px;
+            height: 17px;
+        }
     }
 
     .page-header {
-
         &__eyebrow {
             font-size: 0.52rem;
             letter-spacing: 0.08em;
@@ -2680,7 +3467,6 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 
     .panel__title {
-
         h2 {
             font-size: 0.85rem;
         }
@@ -2737,7 +3523,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 
     .recent-reports__header {
-        align-items: flex-start;
+        align-items: center;
 
         h2 {
             font-size: 0.95rem;
@@ -2769,9 +3555,35 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 // ── Very Small Devices ───────────────────────────────────────────────────────
 
 @media (max-width: 350px) {
-
     .home-page {
         padding-inline: 0.5rem;
+    }
+
+    .home-header__name {
+        font-size: 0.78rem;
+    }
+
+    .home-header__logout {
+        height: 32px;
+        padding: 0 0.6rem;
+    }
+
+    .mock-cta {
+        gap: 0.65rem;
+        padding: 0.8rem;
+
+        &__icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        &__title {
+            font-size: 0.84rem;
+        }
+
+        &__subtitle {
+            display: none;
+        }
     }
 
     .page-header h1 {
@@ -2801,12 +3613,9 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 
 
-// ── Short Viewports (small-height laptops: 1366×768, 1280×720, 1440×900…) ────
-// Split layout only — the stacked mobile layout scrolls naturally.
-// Ordered from mild → aggressive; later rules override earlier ones.
+// ── Short Viewports (small-height laptops) ───────────────────────────────────
 
 @media (min-width: 701px) and (max-height: 860px) {
-
     .home-page {
         padding: 1rem 1.5rem 1.25rem;
         gap: 0.85rem;
@@ -2864,9 +3673,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 }
 
-
 @media (min-width: 701px) and (max-height: 780px) {
-
     .home-page {
         padding: 0.85rem 1.25rem 1rem;
         gap: 0.7rem;
@@ -2942,9 +3749,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 }
 
-
 @media (min-width: 701px) and (max-height: 700px) {
-
     .home-page {
         padding: 0.7rem 1rem 0.85rem;
         gap: 0.6rem;
@@ -3025,9 +3830,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     }
 }
 
-
 @media (min-width: 701px) and (max-height: 620px) {
-
     .home-page {
         padding: 0.6rem 0.85rem 0.7rem;
         gap: 0.5rem;
@@ -3109,7 +3912,6 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 // ── Reduced Motion ───────────────────────────────────────────────────────────
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {

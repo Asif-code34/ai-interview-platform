@@ -1,0 +1,820 @@
+// ── Variables (aligned with home.scss) ───────────────────────────────────────
+
+$bg-page:        #0d1117;
+$bg-card:        #161b22;
+$bg-input:       #1e2535;
+$border-color:   #2a3348;
+$text-primary:   #e6edf3;
+$text-muted:     #7d8590;
+$accent:         #ff2d78;
+$accent-light:   #ff6b9d;
+$accent-dark:    #d61f63;
+$success:        #3fb950;
+$warning:        #f5a623;
+$danger:         #ff4d4d;
+
+$font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+       Roboto, sans-serif;
+
+$content-max: 980px;
+
+// ── Reset ────────────────────────────────────────────────────────────────────
+
+.my-interviews-page,
+.my-interviews-page *,
+.my-interviews-page *::before,
+.my-interviews-page *::after {
+    box-sizing: border-box;
+}
+
+// ── Page ─────────────────────────────────────────────────────────────────────
+
+.my-interviews-page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: $bg-page;
+    color: $text-primary;
+    font-family: $font;
+
+    padding: 1.5rem 1.5rem 3rem;
+    gap: 1.5rem;
+
+    overflow-x: hidden;
+}
+
+// ── Loading / Error screen ───────────────────────────────────────────────────
+
+.my-interviews-loading {
+    flex: 1;
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    gap: 1rem;
+
+    padding: 2rem 1rem;
+
+    .loader-ring {
+        width: 56px;
+        height: 56px;
+
+        border-radius: 50%;
+        border: 4px solid rgba(#fff, 0.08);
+        border-top-color: $accent;
+
+        animation: spin 0.9s linear infinite;
+    }
+
+    h2 {
+        margin: 0;
+
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    p {
+        margin: 0;
+        max-width: 420px;
+
+        color: $text-muted;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.my-interviews-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+
+    margin-top: 0.75rem;
+}
+
+// ── Header ───────────────────────────────────────────────────────────────────
+
+.my-interviews-header {
+    width: 100%;
+    max-width: $content-max;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+
+    padding-top: 0.5rem;
+}
+
+.my-interviews-header__text {
+    min-width: 0;
+}
+
+.my-interviews-header__eyebrow {
+    margin: 0 0 0.5rem;
+
+    color: $accent;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.my-interviews-header h1 {
+    margin: 0 0 0.4rem;
+
+    font-size: clamp(1.65rem, 3vw, 2.15rem);
+    font-weight: 750;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: $text-primary;
+}
+
+.my-interviews-header__text > p:last-child {
+    margin: 0;
+    max-width: 560px;
+
+    color: $text-muted;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.my-interviews-header__cta {
+    flex-shrink: 0;
+}
+
+// ── Filter tabs ──────────────────────────────────────────────────────────────
+
+.my-interviews-filters {
+    width: 100%;
+    max-width: $content-max;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    padding: 0.45rem 0.85rem;
+
+    background-color: rgba(#fff, 0.03);
+    color: $text-muted;
+
+    border: 1px solid $border-color;
+    border-radius: 999px;
+
+    font-family: $font;
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1;
+
+    cursor: pointer;
+    white-space: nowrap;
+    touch-action: manipulation;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover:not(:disabled) {
+        border-color: rgba($accent, 0.35);
+        color: $text-primary;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+
+    &--active {
+        background-color: rgba($accent, 0.12);
+        color: $accent;
+        border-color: rgba($accent, 0.4);
+    }
+}
+
+.filter-tab__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 18px;
+    padding: 0 0.35rem;
+
+    background-color: rgba(#fff, 0.08);
+    border-radius: 999px;
+
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1;
+
+    .filter-tab--active & {
+        background-color: rgba($accent, 0.25);
+        color: $accent-light;
+    }
+}
+
+// ── List ─────────────────────────────────────────────────────────────────────
+
+.my-interviews-list {
+    width: 100%;
+    max-width: $content-max;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// ── Interview card ───────────────────────────────────────────────────────────
+
+.interview-card {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+
+    padding: 1.15rem 1.25rem;
+
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 0.85rem;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        border-color: lighten($border-color, 8%);
+        background-color: lighten($bg-card, 1%);
+        transform: translateY(-2px);
+
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+
+        .interview-card__arrow {
+            color: $accent;
+            transform: translateX(3px);
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+}
+
+.interview-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.interview-card__title {
+    min-width: 0;
+    flex: 1;
+
+    h3 {
+        margin: 0 0 0.35rem;
+
+        color: $text-primary;
+        font-size: 1rem;
+        font-weight: 650;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.interview-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    margin: 0;
+
+    color: $text-muted;
+    font-size: 0.72rem;
+}
+
+.meta-chip {
+    text-transform: capitalize;
+}
+
+.meta-dot {
+    color: $border-color;
+}
+
+// ── Status badge ─────────────────────────────────────────────────────────────
+
+.status-badge {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0.25rem 0.55rem;
+
+    border-radius: 0.4rem;
+
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    &--completed {
+        background-color: rgba($success, 0.1);
+        color: $success;
+        border: 1px solid rgba($success, 0.25);
+    }
+
+    &--in-progress {
+        background-color: rgba($accent, 0.1);
+        color: $accent-light;
+        border: 1px solid rgba($accent, 0.25);
+    }
+
+    &--abandoned {
+        background-color: rgba($warning, 0.1);
+        color: $warning;
+        border: 1px solid rgba($warning, 0.25);
+    }
+
+    &--unknown {
+        background-color: rgba(#fff, 0.06);
+        color: $text-muted;
+        border: 1px solid $border-color;
+    }
+}
+
+// ── Progress bar ─────────────────────────────────────────────────────────────
+
+.interview-card__progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.interview-card__progress-track {
+    width: 100%;
+    height: 4px;
+
+    border-radius: 999px;
+    background-color: rgba(#fff, 0.06);
+
+    overflow: hidden;
+}
+
+.interview-card__progress-fill {
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        $accent 0%,
+        $accent-dark 100%
+    );
+
+    border-radius: 999px;
+
+    transition: width 0.4s ease;
+}
+
+.interview-card__progress-label {
+    color: $text-muted;
+    font-size: 0.7rem;
+    letter-spacing: 0.01em;
+}
+
+// ── Bottom row ───────────────────────────────────────────────────────────────
+
+.interview-card__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    padding-top: 0.75rem;
+    margin-top: auto;
+
+    border-top: 1px solid rgba($border-color, 0.7);
+}
+
+.interview-card__bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+}
+
+.interview-card__action-label {
+    color: $accent-light;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.interview-card__date {
+    color: $text-muted;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.interview-card__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $text-muted;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+// ── Score pill ───────────────────────────────────────────────────────────────
+
+.match-score {
+    flex-shrink: 0;
+
+    padding: 0.35rem 0.55rem;
+
+    border-radius: 0.4rem;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+
+    &.score--high {
+        color: $success;
+        background-color: rgba($success, 0.1);
+        border: 1px solid rgba($success, 0.22);
+    }
+
+    &.score--mid {
+        color: $warning;
+        background-color: rgba($warning, 0.1);
+        border: 1px solid rgba($warning, 0.22);
+    }
+
+    &.score--low {
+        color: $danger;
+        background-color: rgba($danger, 0.1);
+        border: 1px solid rgba($danger, 0.22);
+    }
+}
+
+// ── Empty state ──────────────────────────────────────────────────────────────
+
+.my-interviews-empty {
+    width: 100%;
+    max-width: 520px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+
+    padding: 3rem 1.5rem;
+
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+
+    margin-top: 1rem;
+
+    &__icon {
+        font-size: 2.75rem;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    h2 {
+        margin: 0;
+
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    p {
+        margin: 0;
+        max-width: 380px;
+
+        color: $text-muted;
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    button {
+        margin-top: 0.5rem;
+    }
+}
+
+// ── Pagination ───────────────────────────────────────────────────────────────
+
+.my-interviews-pagination {
+    width: 100%;
+    max-width: $content-max;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    margin-top: 0.75rem;
+}
+
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.55rem 1rem;
+
+    background-color: rgba(#fff, 0.04);
+    color: $text-primary;
+
+    border: 1px solid $border-color;
+    border-radius: 0.55rem;
+
+    font-family: $font;
+    font-size: 0.76rem;
+    font-weight: 650;
+    line-height: 1.2;
+
+    cursor: pointer;
+    touch-action: manipulation;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background-color: rgba(#fff, 0.08);
+        border-color: rgba(#fff, 0.18);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.pagination-info {
+    color: $text-muted;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+// ── Buttons ──────────────────────────────────────────────────────────────────
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 0.65rem 1.2rem;
+
+    border-radius: 0.55rem;
+    border: 1px solid transparent;
+
+    font-family: $font;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        $accent 0%,
+        $accent-dark 100%
+    );
+    color: #fff;
+
+    border-color: rgba(#fff, 0.08);
+
+    box-shadow:
+        0 6px 20px rgba($accent, 0.22),
+        inset 0 1px 0 rgba(#fff, 0.12);
+
+    &:hover:not(:disabled) {
+        box-shadow:
+            0 10px 28px rgba($accent, 0.32),
+            inset 0 1px 0 rgba(#fff, 0.12);
+    }
+}
+
+.btn-secondary {
+    background-color: rgba(#fff, 0.04);
+    color: $text-primary;
+
+    border-color: rgba(#fff, 0.1);
+
+    &:hover:not(:disabled) {
+        background-color: rgba(#fff, 0.07);
+        border-color: rgba(#fff, 0.18);
+    }
+}
+
+// ── Tablet ───────────────────────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+    .my-interviews-page {
+        padding: 1.25rem 1rem 2.5rem;
+        gap: 1.25rem;
+    }
+
+    .my-interviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .my-interviews-header__cta {
+        width: 100%;
+    }
+
+    .interview-card {
+        padding: 1rem;
+    }
+
+    .interview-card__title h3 {
+        font-size: 0.95rem;
+    }
+
+    .status-badge {
+        font-size: 0.6rem;
+        padding: 0.22rem 0.5rem;
+    }
+}
+
+// ── Small mobile ─────────────────────────────────────────────────────────────
+
+@media (max-width: 480px) {
+    .my-interviews-page {
+        padding: 1rem 0.75rem 2rem;
+        gap: 1rem;
+    }
+
+    .my-interviews-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .my-interviews-header__text > p:last-child {
+        font-size: 0.82rem;
+    }
+
+    .my-interviews-filters {
+        gap: 0.4rem;
+    }
+
+    .filter-tab {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.7rem;
+    }
+
+    .interview-card {
+        padding: 0.85rem;
+        gap: 0.7rem;
+
+        &:hover {
+            transform: none;
+        }
+    }
+
+    .interview-card__title h3 {
+        font-size: 0.9rem;
+    }
+
+    .interview-card__progress-label,
+    .interview-card__date {
+        font-size: 0.65rem;
+    }
+
+    .match-score {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.68rem;
+    }
+
+    .my-interviews-pagination {
+        gap: 0.6rem;
+    }
+
+    .pagination-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.72rem;
+    }
+
+    .pagination-info {
+        font-size: 0.7rem;
+    }
+}
+
+// ── Very small ───────────────────────────────────────────────────────────────
+
+@media (max-width: 360px) {
+    .interview-card__top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .status-badge {
+        align-self: flex-start;
+    }
+
+    .interview-card__bottom {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .my-interviews-pagination {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+// ── Touch safety ─────────────────────────────────────────────────────────────
+
+@media (hover: none) {
+    .interview-card:hover {
+        transform: none;
+    }
+}
+
+// ── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+    .my-interviews-page *,
+    .my-interviews-page *::before,
+    .my-interviews-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

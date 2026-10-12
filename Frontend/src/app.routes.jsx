@@ -7,7 +7,7 @@ import Interview from "./features/interview/pages/Interview";
 import StartInterview from "./features/mockInterview/pages/MockInterviewSetup";
 import LiveInterview from "./features/mockInterview/pages/LiveInterview";
 import InterviewResult from "./features/mockInterview/pages/InterviewResult";
-
+  import MyInterviews from "./features/mockInterview/pages/MyInterviews";
 // import Interview from "./features/interview/pages/Interview";
 
 export const router = createBrowserRouter([
@@ -68,4 +68,13 @@ export const router = createBrowserRouter([
       </Protected>
     ),
   },
+
+{
+  path: "/interviews",
+  element: (
+    <Protected>
+      <MyInterviews />
+    </Protected>
+  ),
+},
 ]);

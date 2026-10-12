@@ -155,7 +155,26 @@ $font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+// ── Auth Error ───────────────────────────────────────────────────────────────
 
+.auth-error {
+  width: 100%;
+
+  padding: 0.8rem 1rem;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 0.6rem;
+
+  background-color: rgba(248, 113, 113, 0.08);
+
+  color: #f87171;
+
+  font-size: 0.83rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
 // ── Header ────────────────────────────────────────────────────────────────────
 
 .auth-header {
